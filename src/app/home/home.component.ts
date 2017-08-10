@@ -19,7 +19,13 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // Simple Observable just emit sequential numbers
-    const myNumbers = Observable.interval(1000);
+    const myNumbers = Observable.interval(1000)
+      // understanding a observable map operator
+      .map(
+        (data: number) => {
+          return data * 2;
+        }
+      );
     this.numbersObsSubscription = myNumbers.subscribe(
       (number: number) => {
         console.log(number);
